@@ -12,7 +12,8 @@ At Blue Squad, we have several backend microservices (i.e. verifying voter regis
   - reducing request latency
   - increasing the the number of requests handled per second 
   - reducing the number of failed requests (due to timeouts). 
-- Achieving this may require you to leverage additional technologies (i.e. redis), which is something you're welcome and encouraged to do. 
+- Achieving this may require you to leverage additional technologies (i.e. redis), which is something you're welcome and encouraged to do.
+- The endpoint provided is a very simplified in the sense that it doesn't have validation, password encryption etc. We didn't find it necessary to add these features for the purpose of this challenge
 
 ## Setup Instructions
 ### Prerequisites
