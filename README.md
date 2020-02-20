@@ -8,11 +8,14 @@ At Blue Squad, we have several backend microservices (i.e. verifying voter regis
 
   ![benchmark](/gif/benchmark.gif)
 
-- Specifically, within the `api` directory, you'll find a file named `server.js` which has an endpoint `POST /users` that handles user creation. It simply takes what the request body and inserts it into mongo and then runs a function called `somethingSlow` synchronously and then returns a response to the user. `somethingSlow` is a function that mocks the behavior/speed of a calling a potential microservice. This doesn't have to be done synchronously. Upon running the benchmark, you'll notice that the response times are quite slow and requests will often time out. You are being tasked with: 
+- Specifically, within the `api` directory, you'll find a file named `server.js` which has an endpoint `POST /users` that handles user creation. It simply takes what the request body and inserts it into mongo and then runs a function called `somethingSlow` synchronously and then returns a response to the user. `somethingSlow` is a function that mocks the behavior/speed of a calling a potential microservice. This doesn't have to be done synchronously. By this we mean that `somethingSlow` doesn't have to happen prior to returning the response. It can happen _asynchronously_. Upon running the benchmark, you'll notice that the response times are quite slow and requests will often time out. You are being tasked with: 
   - reducing request latency
   - increasing the the number of requests handled per second 
   - reducing the number of failed requests (due to timeouts). 
 - Achieving this may require you to leverage additional technologies (i.e. redis), which is something you're welcome and encouraged to do.
+- You are by no means limited to just `server.js`. Feel free to do whatever you want. The only requirements are that:
+  - the requests must be responded to
+  - the effects of `somethingSlow` must happen
 - The endpoint provided is a very simplified in the sense that it doesn't have validation, password encryption etc. We didn't find it necessary to add these features for the purpose of this challenge
 
 ## Setup Instructions
