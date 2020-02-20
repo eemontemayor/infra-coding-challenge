@@ -12,7 +12,7 @@ At Blue Squad, we have several backend microservices (i.e. verifying voter regis
   - reducing request latency
   - increasing the the number of requests handled per second 
   - reducing the number of failed requests (due to timeouts). 
-- Achieving this may require you to leverage additional technologies (i.e. redis), which is something you're welcome and encouraged to do.
+- Achieving this may require you to leverage additional technologies (i.e. redis, rabbitmq), which is something you're welcome and encouraged to do.
 - You are by no means limited to just `server.js`. Feel free to do whatever you want. The only requirements are that:
   - the requests must be responded to
   - the effects of `somethingSlow` must happen
