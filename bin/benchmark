@@ -1,0 +1,6 @@
+#! /bin/bash
+
+# get absolute path of this file
+CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+docker container run -t --name benchmark --rm --network devnet -e URL=http://api:9000 benchmark "$@"

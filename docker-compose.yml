@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  api:
+    container_name: api
+    image: node:12.5-stretch
+    networks:
+      - devnet
+    ports:
+      - 9000:9000
+    volumes:
+        - /code/node_modules
+        - ./server:/code
+
+    command: bash -c "cd /code && npm install && sleep infinity"
+  mongo:
+    container_name: mongo
+    image: mongo:4.0.9
+    networks:
+      devnet:
+        aliases: 
+          - mongo
+    ports:
+      - 27017:27017
+networks:
+  devnet:
+    name: devnet

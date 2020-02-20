@@ -1,0 +1,8 @@
+#! /bin/bash
+
+# get absolute path of this file
+CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+docker-compose -f ${CWD}/../docker-compose.yml down
+docker system prune --volumes
+docker image rm benchmark

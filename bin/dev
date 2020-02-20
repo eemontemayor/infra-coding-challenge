@@ -1,0 +1,18 @@
+#! /bin/bash
+
+# get absolute path of this file
+CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+LIGHT_BLUE='\033[0;104m'
+RESET='\033[0m'
+
+echo -e "${LIGHT_BLUE}Building benchmark image${RESET}"
+
+docker build \
+    -f ${CWD}/../benchmark/Dockerfile \
+    --tag benchmark \
+    ${CWD}/../benchmark
+
+
+echo -e "${LIGHT_BLUE}starting dev and mongo containers${RESET}"
+docker-compose -f ${CWD}/../docker-compose.yml up --build
