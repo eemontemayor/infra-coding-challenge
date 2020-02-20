@@ -7,7 +7,7 @@ const autocannon = require('autocannon');
 const URL = process.env.URL || 'http://localhost:9000';
 
 let [ numConnections, duration ] = process.argv.slice(2);
-numConnections = parseInt(numConnections) || 10;
+numConnections = parseInt(numConnections) || 25;
 
 duration = parseInt(duration) || '45s';
 
