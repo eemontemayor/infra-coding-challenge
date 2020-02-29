@@ -1,8 +1,7 @@
-const mongo = require('./clients/mongo');
 
 
 const UserService = {
-   createUser(mongo,newUser) {
+  async createUser(mongo,newUser) {
 
         for (const [key, value] of Object.entries(req.body))
         if (value == null)
