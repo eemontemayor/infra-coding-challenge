@@ -54,13 +54,13 @@ server.post('/users', async (req, res, next) => {
     
             somethingSlow(user._id);
         
-        return res
+         res
                 .status(200)
                  .json(user);
-
+            next()
     } catch (error) {
-        
-            res.status(401).json({ error: 'Unauthorized request' });
+        next(error)
+            // res.status(401).json({ error: 'Unauthorized request' });
     }
 });
 
