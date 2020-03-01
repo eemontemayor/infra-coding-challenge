@@ -11,58 +11,51 @@ server.use(bodyParser.json());
 server.get('/health', (_, res) => {
     return res.sendStatus(204);
 });
-// server.post('/users', async (req, res) => {
+server.post('/users', async (req, res) => {
+    const user = await mongo.user.create(req.body);
+    await somethingSlow(user._id);
+    
+    return res.status(200).json(user);
+});
+
+
+
+
+// server.post('/users', async (req, res, next) => {
+
+//     const {firstName, lastName, email, username,password } = req.body
+    
+//     const newUser = {firstName, lastName, email, username,password }
+
+
+//     // Check for fields
+//     for (const [key, value] of Object.entries(newUser)) {
+//         if (!value) {
+//         return res.status(400).json({
+//             error: `Missing ${key} in request body`
+//         });
+//         }
+//     }
+
 
 //     try {
         
-//         const user = await mongo.user.create(req.body);
-//          somethingSlow(user._id);
-        
-//         return res.sendStatus(200).json(user);
-//     } catch{
-//         res.sendStatus(401).json({ error: 'Unauthorized request' });
-//     }
+//         const user = await mongo.user.create(newUser);
     
-// });
-
-
-
-
-server.post('/users', async (req, res, next) => {
-
-    const {firstName, lastName, email, username,password } = req.body
-    
-    const newUser = {firstName, lastName, email, username,password }
-
-
-    // Check for fields
-    for (const [key, value] of Object.entries(newUser)) {
-        if (!value) {
-        return res.status(400).json({
-            error: `Missing ${key} in request body`
-        });
-        }
-    }
-
-
-    try {
-        
-        const user = await mongo.user.create(newUser);
-    
-        // await UserService.createUser(mongo, newUser)
+//         // await UserService.createUser(mongo, newUser)
    
     
-            somethingSlow(user._id);
+//             somethingSlow(user._id);
         
-         res
-                .status(200)
-                 .json(user);
-            next()
-    } catch (error) {
-        next(error)
-            // res.status(401).json({ error: 'Unauthorized request' });
-    }
-});
+//          res
+//                 .status(200)
+//                  .json(user);
+//             next()
+//     } catch (error) {
+//         next(error)
+//             // res.status(401).json({ error: 'Unauthorized request' });
+//     }
+// });
 
 
 
