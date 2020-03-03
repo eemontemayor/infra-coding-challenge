@@ -1,3 +1,5 @@
+'use strict';
+
 const mongo = require('../clients/mongo');
 const { sleep, generateRandomNum } = require('../utils');
 

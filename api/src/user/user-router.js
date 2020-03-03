@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express')
 const mongo = require('../clients/mongo');
 const userRouter = express.Router()
@@ -6,7 +8,7 @@ const bodyParser = require('body-parser');
 
 
 
-serializeUser = user => ({
+const serializeUser = user => ({
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email,
