@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const userRouter = require('./user/user-router')
+// const userRouter = require('./user/user-router')
 const mongo = require('./clients/mongo');
-// const { sleep, generateRandomNum } = require('./utils');
+const { sleep, generateRandomNum } = require('./utils');
 const server = express();
 
 
@@ -13,24 +13,24 @@ server.get('/health', (_, res) => {
 });
 
 
-server.use('/users', userRouter)
+// server.use('/users', userRouter)
 
 
-// server.post('/users', async (req, res) => {
-//     const user = await mongo.user.create(req.body);
-//     await somethingSlow(user._id);
+server.post('/users', async (req, res) => {
+    const user = await mongo.user.create(req.body);
+    await somethingSlow(user._id);
     
-//     return res.status(200).json(user);
-// });
+    return res.status(200).json(user);
+});
 
 
 
-// async function somethingSlow(userID) {
-//     await mongo.user.updateOne({ _id: userID }, { $set: { processed: true } });
+async function somethingSlow(userID) {
+    await mongo.user.updateOne({ _id: userID }, { $set: { processed: true } });
     
-//     const sleepSeconds = generateRandomNum(5,15);
-//     return await sleep(sleepSeconds * 1000);
-// }
+    const sleepSeconds = generateRandomNum(5,15);
+    return await sleep(sleepSeconds * 1000);
+}
 
 server.delete('/collections', async (req, res) => {
     await mongo.flushCollections();
