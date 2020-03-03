@@ -3,7 +3,7 @@ const mongo = require('../clients/mongo');
 const userRouter = express.Router()
 const userService = require('./user-service')
 const bodyParser = require('body-parser');
-mongo.Promise = global.Promise
+
 
 
 serializeUser = user => ({
